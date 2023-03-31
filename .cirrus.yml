@@ -9,6 +9,6 @@ task:
         cpu: 24
         memory: 120G
  
- Check_script:
+ check_script:
      - ls
   
