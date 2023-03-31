@@ -8,7 +8,7 @@ task:
         image: apon77/aosp:cirrus
         cpu: 24
         memory: 120G
- 
+  
   Environmen-Check_background_script:
      - cat /etc/os* && env && nproc && gcc --version && clang --version
   
