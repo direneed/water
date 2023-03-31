@@ -6,8 +6,8 @@ task:
   timeout_in: 4h
   container:
         image: apon77/aosp:cirrus
-        cpu: 24
-        memory: 120G
+        cpu: 16
+        memory: 64G
   
   Environmen-Check_background_script:
      - cat /etc/os* && env && nproc && gcc --version && clang --version
