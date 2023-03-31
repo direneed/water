@@ -1,0 +1,14 @@
+env:
+   WORKDIR: "/t/b"
+   CIRRUS_CLONE_DEPTH: "1"
+task:
+  name: "bui"
+  timeout_in: 4h
+  container:
+        image: apon77/aosp:cirrus
+        cpu: 24
+        memory: 120G
+ 
+ Check:
+     - ls
+  
