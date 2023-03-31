@@ -9,6 +9,7 @@ task:
         cpu: 24
         memory: 120G
  
- check_script:
-     - ls
+  Environmen-Check_background_script:
+     - cat /etc/os* && env && nproc && gcc --version && clang --version
+  
   
