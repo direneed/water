@@ -11,7 +11,7 @@ task:
    
   Check_background_script:
      - cat /etc/os* && env && nproc && gcc --version && clang --version
-  
+     - mkdir /t/b
   S-ync_script:
      - cd $CIRRUS_WORKING_DIR
      - chmod u+r+x s.sh
