@@ -12,4 +12,6 @@ task:
   Check_background_script:
      - cat /etc/os* && env && nproc && gcc --version && clang --version
   
-  
+  S-ync_script:
+     - cd $WORKDIR
+     - 
