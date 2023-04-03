@@ -16,3 +16,18 @@ task:
      - cd $CIRRUS_WORKING_DIR
      - chmod u+r+x s.sh
      - ./ziping.sh
+  B-u_script:
+     - export PATH="/usr/lib/ccache:$PATH"
+     - export CCACHE_DIR=$WORKDIR/ccache
+     - export CCACHE_EXEC=/usr/bin/ccache
+     - export USE_CCACHE=1
+     - export CCACHE_DEPEND=true
+     - export CCACHE_FILECLONE=true
+     - export CCACHE_LIMIT_MULTIPLE=0.9
+     - export CCACHE_NOCOMPRESS=true
+     - export CCACHE_NOHASHDIR=1
+     - which ccache
+     - ccache -M 100
+     - ccache -z
+     - command=$(tail $CIRRUS_WORKING_DIR/build.sh -n +$(expr $(grep 'build/envsetup.sh' $CIRRUS_WORKING_DIR/build.sh -n | cut -f1 -d:) - 1)| head -n -1 | grep -v '# upload rom')
+     - bash -c "$command"
