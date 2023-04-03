@@ -3,13 +3,13 @@ env:
    CIRRUS_CLONE_DEPTH: "1"
 task:
   name: "bui"
-  timeout_in: 4h
+  timeout_in: 2h
   container:
         image: apon77/aosp:cirrus
-        cpu: 16
-        memory: 64G
+        cpu: 8
+        memory: 32G
    
-  Environmen-Check_background_script:
+  Check_background_script:
      - cat /etc/os* && env && nproc && gcc --version && clang --version
   
   
