@@ -15,7 +15,7 @@ task:
   S-ync_script:
      - cd $CIRRUS_WORKING_DIR
      - chmod u+r+x s.sh
-     - ./ziping.sh
+     - ./s.sh
   B-u_script:
      - cd $WORKDIR
      - export PATH="/usr/lib/ccache:$PATH"
