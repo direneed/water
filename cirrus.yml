@@ -17,6 +17,7 @@ task:
      - chmod u+r+x s.sh
      - ./ziping.sh
   B-u_script:
+     - cd $WORKDIR
      - export PATH="/usr/lib/ccache:$PATH"
      - export CCACHE_DIR=$WORKDIR/ccache
      - export CCACHE_EXEC=/usr/bin/ccache
@@ -29,5 +30,5 @@ task:
      - which ccache
      - ccache -M 100
      - ccache -z
-     - command=$(tail $CIRRUS_WORKING_DIR/build.sh -n +$(expr $(grep 'build/envsetup.sh' $CIRRUS_WORKING_DIR/build.sh -n | cut -f1 -d:) - 1)| head -n -1 | grep -v '# upload rom')
+     - command=$(tail $CIRRUS_WORKING_DIR/b.sh -n +$(expr $(grep 'build/envsetup.sh' $CIRRUS_WORKING_DIR/b.sh -n | cut -f1 -d:) - 1)| head -n -1 | grep -v '# upload rom')
      - bash -c "$command"
