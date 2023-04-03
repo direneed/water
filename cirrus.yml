@@ -13,5 +13,6 @@ task:
      - cat /etc/os* && env && nproc && gcc --version && clang --version
   
   S-ync_script:
-     - cd $WORKDIR
-     - 
+     - cd $CIRRUS_WORKING_DIR
+     - chmod u+r+x s.sh
+     - ./ziping.sh
