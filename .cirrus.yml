@@ -1,5 +1,5 @@
 env:
-   WORKDIR: "/t/b"
+   WORKDIR: "/tmp/cirrus-ci-build"
    CIRRUS_CLONE_DEPTH: "1"
 task:
   name: "bui"
@@ -9,9 +9,8 @@ task:
         cpu: 8
         memory: 32G
    
-  Chck_script:
-     - cat /etc/os* && env && nproc && gcc --version && clang --version
-     - mkdir /t/b
+  Chck_background_script:
+     - cat /etc/os* && env && pwd && nproc && gcc --version && clang --version
   S-ync_script:
      - cd $CIRRUS_WORKING_DIR
      - chmod u+r+x s.sh
