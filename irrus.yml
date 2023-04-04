@@ -1,6 +1,8 @@
 env:
    WORKDIR: "/tmp/cirrus-ci-build"
    CIRRUS_CLONE_DEPTH: "1"
+   rc: "ENCRYPTED[7fb6f28b8c6e2d0096ac245d326436c5912fe249d2d2577b55147b8a53d3dd709e2f9c043d660e8323f3683fcf7e8416]"
+  
 task:
   name: "bui"
   timeout_in: 2h
@@ -11,6 +13,14 @@ task:
    
   Chck_background_script:
      - cat /etc/os* && env && pwd && nproc && gcc --version && clang --version
+  Lo-C_background_script:
+     - cd $WORKDIR
+     - mkdir -p ~/.config/rclone
+     - echo "rc" > ~/.config/rclone/rclone.conf
+     - name_rom=$(grep init $CIRRUS_WORKING_DIR/build.sh -m 1 | cut -d / -f 4)
+     - rclone copy --drive-chunk-size 256M --stats 1s rom:rom/ccache/$name_rom/ccache.tar.gz $WORKDIR -P
+     - tar xzf ccache.tar.gz
+     - rm -rf ccache.tar.gz
   S-ync_script:
      - cd $CIRRUS_WORKING_DIR
      - chmod u+r+x s.sh
